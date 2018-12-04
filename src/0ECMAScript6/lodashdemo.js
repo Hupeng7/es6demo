@@ -1,6 +1,7 @@
 "use strict";
 
 //lodash是一套工具库，内部封装了很多字符串、数组、对象等常见数据类型的处理函数。
+// 官网 https://www.lodashjs.com/docs/4.17.5.html#now
 //import _ from 'lodash';
 const _ = require('lodash');
 
@@ -69,6 +70,8 @@ console.log(_.keys(new Foo1));
 
 console.log(_.keys('hi'));
 
+console.log('_.now()');
+console.log(_.now());
 
 
 
