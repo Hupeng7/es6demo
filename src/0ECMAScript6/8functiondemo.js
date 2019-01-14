@@ -160,9 +160,11 @@ name属性的一个用处，就是获取参数函数的名字。
 
 var myFunc = function () {
 };
+
 function test(f) {
     console.log(f.name);
 }
+
 test(myFunc); // myFunc
 
 /*
@@ -172,8 +174,9 @@ length 属性
 length属性始终等于2。
 length属性提供了一种机制，判断定义时和调用时参数的差异，以便实现面向对象编程的”方法重载“（overload）。
  */
-function flen(a,b) {
+function flen(a, b) {
 }
+
 console.log(flen.length); // 2
 
 /*
@@ -185,11 +188,228 @@ function fToString() {
     b();
     c();
 }
+
 console.log(fToString.toString());
 
+/*
+函数内部的变量提升
+与全局作用域一样，函数作用域内部也会产生“变量提升”现象。
+var命令声明的变量，不管在什么位置，变量声明都会被提升到函数体的头部。
+ */
+function fooX(x) {
+    if (x > 100) {
+        var tmp = x - 100;
+    }
+}
 
+//等同于
+function fooX1(x) {
+    var tmp;
+    if (x > 100) {
+        tmp = x - 100;
+    }
+    ;
+}
 
+/*
+函数本身的作用域
+函数本身也是一个值，也有自己的作用域。它的作用域与变量一样，就是其声明时所在的作用域，
+与其运行时所在的作用域无关。
+ */
+var a33 = 1;
+var x33 = function () {
+    console.log(a33);
+};
 
+function f33() {
+    var a33 = 2;
+    x33();
+}
+
+f33(); // 1
+
+/*
+概述
+函数运行的时候，有时需要提供外部数据，不同的外部数据会得到不同的结果，这种外部数据就叫参数。
+ */
+function square(x) {
+    return x * x;
+};
+console.log(square(2)); // 4
+console.log(square(3)); // 9
+
+/*
+传递方式
+函数参数如果是原始类型的值（数值、字符串、布尔值），传递方式是传值传递（passes by value）。
+这意味着，在函数体内修改参数值，不会影响到函数外部。
+
+var p = 2;
+
+function f(p) {
+  p = 3;
+}
+f(p);
+
+p // 2
+上面代码中，变量p是一个原始类型的值，传入函数f的方式是传值传递。
+因此，在函数内部，p的值是原始值的拷贝，无论怎么修改，都不会影响到原始值。
+
+但是，如果函数参数是复合类型的值（数组、对象、其他函数），传递方式是传址传递（pass by reference）。
+也就是说，传入函数的原始值的地址，因此在函数内部修改参数，将会影响到原始值。
+ */
+
+var obj6 = {p: 1};
+
+function f6(obj6) {
+    obj6.p = 2;
+}
+
+f6(obj6);
+console.log(obj6.p); // 2
+
+var obj7 = [1, 2, 3];
+
+function f7(obj7) {
+    obj7 = [2, 3, 4];
+}
+
+f7(obj7);
+console.log(obj7);
+
+/*
+同名参数
+如果有同名的参数，则取最后出现的那个值。
+
+function f(a, a) {
+  console.log(a);
+}
+
+f(1, 2) // 2
+上面代码中，函数f有两个参数，且参数名都是a。取值的时候，以后面的a为准，即使后面的a没有值或被省略，
+也是以其为准。
+ */
+
+/*
+arguments 对象
+（1）定义
+
+由于 JavaScript 允许函数有不定数目的参数，所以需要一种机制，可以在函数体内部读取所有参数。
+这就是arguments对象的由来。
+
+arguments对象包含了函数运行时的所有参数，arguments[0]就是第一个参数，arguments[1]就是第二个参数，
+以此类推。这个对象只有在函数体内部，才可以使用。
+
+var f = function (one) {
+  console.log(arguments[0]);
+  console.log(arguments[1]);
+  console.log(arguments[2]);
+}
+
+f(1, 2, 3)
+// 1
+// 2
+// 3
+正常模式下，arguments对象可以在运行时修改。
+
+var f = function(a, b) {
+  arguments[0] = 3;
+  arguments[1] = 2;
+  return a + b;
+}
+
+f(1, 1) // 5
+上面代码中，函数f调用时传入的参数，在函数内部被修改成3和2。
+
+严格模式下，arguments对象是一个只读对象，修改它是无效的，但不会报错。
+
+var f = function(a, b) {
+  'use strict'; // 开启严格模式
+  arguments[0] = 3; // 无效
+  arguments[1] = 2; // 无效
+  return a + b;
+}
+
+f(1, 1) // 2
+上面代码中，函数体内是严格模式，这时修改arguments对象就是无效的。
+
+通过arguments对象的length属性，可以判断函数调用时到底带几个参数。
+
+function f() {
+  return arguments.length;
+}
+
+f(1, 2, 3) // 3
+f(1) // 1
+f() // 0
+ */
+
+/*
+与数组的关系
+
+需要注意的是，虽然arguments很像数组，但它是一个对象。数组专有的方法（比如slice和forEach），
+不能在arguments对象上直接使用。
+
+如果要让arguments对象使用数组方法，真正的解决方法是将arguments转为真正的数组。
+下面是两种常用的转换方法：slice方法和逐一填入新数组。
+ */
+
+//var args = Array.prototype.slice.call(arguments);
+
+// var args = [];
+// for (let i = 0, len = arguments.length; i < len; i++) {
+//     args.push(arguments[i]);
+// }
+
+/*
+闭包最大的特点，就是它可以“记住”诞生的环境，比如f2记住了它诞生的环境f1，所以从f2可以得到f1的内部变量。
+在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。
+
+闭包的最大用处有两个，一个是可以读取函数内部的变量，另一个就是让这些变量始终保持在内存中，
+即闭包可以使得它诞生环境一直存在。请看下面的例子，闭包使得内部变量记住上一次调用时的运算结果。
+ */
+
+function craeteIncrementor(start) {
+    return function () {
+        console.log(start++);
+    };
+}
+
+var inc = craeteIncrementor(5);
+inc(); // 5
+inc(); // 6
+inc(); // 7
+
+//闭包的另一个用处，是封装对象的私有属性和私有方法。
+function Person7(name) {
+    var _age;
+
+    function setAge(n) {
+        _age = n;
+    }
+
+    function getAge() {
+        return _age;
+    }
+
+    return {
+        name: name,
+        getAge: getAge,
+        setAge: setAge
+    };
+}
+
+var person7 = Person7('sam');
+person7.setAge(25);
+person7.getAge(); // 25
+
+/*
+eval 命令
+基本用法
+eval命令接受一个字符串作为参数，并将这个字符串当作语句执行。
+ */
+eval('var a8 = 1;');
+//console.log(a8);
+console.log(eval(123));
 
 
 
