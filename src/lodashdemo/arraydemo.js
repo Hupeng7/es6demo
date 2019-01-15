@@ -171,3 +171,156 @@ console.log('findLastIndex3--->', findLastIndex3);
 let findLastIndex4 = _.findLastIndex(users4, 'active');
 console.log('findLastIndex4--->', findLastIndex4);
 //findLastIndex4---> 0
+
+//_.flatten(array)
+let flatten1 = _.flatten([1, [2, [3, [4]], 5]]);
+console.log('flatten1--->', flatten1);
+//flatten1---> [ 1, 2, [ 3, [ 4 ] ], 5 ]
+
+//_.flattenDeep(array,)
+let flattenDeep1 = _.flattenDeep([1, [2, [3, [4]], 5]]);
+console.log('flattenDeep1--->', flattenDeep1);
+//flattenDeep1---> [ 1, 2, 3, 4, 5 ]
+
+//_.flattenDepth(array,[depth=1])
+let flattenDeepArr = [1, [2, [3, [4]], 5]];
+let flattenDepth1 = _.flattenDepth(flattenDeepArr, 1);
+console.log('flattenDepth1-->', flattenDepth1);
+//flattenDepth1--> [ 1, 2, [ 3, [ 4 ] ], 5 ]
+
+let flattenDepth2 = _.flattenDepth(flattenDeepArr, 2);
+console.log('flattenDepth2--->', flattenDepth2);
+//flattenDepth2---> [ 1, 2, 3, [ 4 ], 5 ]
+
+//_.fromPairs(pairs)
+let fromPairs1 = _.fromPairs([['a', 1], ['b', 2]]);
+console.log('fromPairs1--->', fromPairs1);
+//fromPairs1---> { a: 1, b: 2 }
+
+//_.head(array)
+let head1 = _.head([1, 2, 3]);
+console.log('head1--->', head1);
+//head1---> 1
+let head2 = _.head([]);
+console.log('head2--->', head2);
+//head2---> undefined
+
+//_.indexOf(array,value,[fromIndex=0])
+let indexOf1 = _.indexOf([1, 2, 1, 2], 2);
+console.log('indexOf1--->', indexOf1);
+//indexOf1---> 1
+let indexOf2 = _.indexOf([1, 2, 1, 2], 2, 2);
+console.log('indexOf2--->', indexOf2);
+//indexOf2---> 3
+
+//_.initial(array)
+let initial1 = _.initial([1, 2, 3]);
+console.log('initial1--->', initial1);
+//initial1---> [ 1, 2 ]
+
+//_.intersection([arrays])
+let intersection1 = _.intersection([2, 1], [2, 3]);
+console.log('intersection1--->', intersection1);
+//intersection1---> [ 2 ]
+
+//_.intersectionBy([arrays],[iteratee=_.identity])
+let intersectionBy1 = _.intersectionBy([2.1, 1, 2], [2.3, 3.4], Math.floor);
+console.log('intersectionBy1--->', intersectionBy1);
+//intersectionBy1---> [ 2.1 ]
+let intersectionBy2 = _.intersectionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+console.log('intersectionBy2--->', intersectionBy2);
+//intersectionBy2---> [ { x: 1 } ]
+
+//_.intersectionWith([arrays],[comparator])
+let intersectionWith1 = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
+let intersectionWith2 = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+let intersectionWith3 = _.intersectionWith(intersectionWith1, intersectionWith2, _.isEqual);
+console.log('intersectionWith3--->', intersectionWith3);
+//intersectionWith3---> [ { x: 1, y: 2 } ]
+
+//_.join(array,[separator=','])
+let join1 = _.join(['a', 'b', 'c'], '~');
+console.log('join1--->', join1);
+//join1---> a~b~c
+
+//_.last(array)
+let last1 = _.last([1, 2, 3]);
+console.log('last1--->', last1);
+//last1---> 3
+
+//_.lastIndexOf(array,value,[fromIndex=array.length-1])
+let lastIndexOf1 = _.lastIndexOf([1, 2, 1, 2], 2);
+console.log('lastIndexOf1--->', lastIndexOf1);
+//lastIndexOf1---> 3
+let lastIndexOf2 = _.lastIndexOf([1, 2, 1, 2], 2, 2);
+console.log('lastIndexOf2--->', lastIndexOf2);
+//lastIndexOf2---> 1
+
+//_.nth(array,[n=0])
+let nthArr = ['a', 'b', 'c', 'd'];
+let nth1 = _.nth(nthArr, 1);
+console.log('nth1--->', nth1);
+//nth1---> b
+let nth2 = _.nth(nthArr, -2);
+console.log('nth2--->', nth2);
+//nth2---> c
+
+//_.pull(array,[values])
+let pullArr = ['a', 'b', 'c', 'a', 'b', 'c'];
+let pull1 = _.pull(pullArr, 'a', 'c');
+console.log('pull1--->', pull1);
+//pull1---> [ 'b', 'b' ]
+
+//_.pullAll(array,values)
+let pullAll1 = _.pullAll(pullArr, ['a', 'c']);
+console.log('pullAll1--->', pullAll1);
+//pullAll1---> [ 'b', 'b' ]
+
+//_.pullAllBy(array,values,[iteratee=_.identity])
+let pullAllByArr = [{ 'x': 1 }, { 'x': 2 }, { 'x': 3 }, { 'x': 1 }];
+let pullAllBy1 = _.pullAllBy(pullAllByArr, [{ 'x': 1 }, { 'x': 3 }], 'x');
+console.log('pullAllBy1--->', pullAllBy1);
+//pullAllBy1---> [ { x: 2 } ]
+
+//_.pullAllWith(array,values,[comparator])
+let pullAllWithArr = [{ 'x': 1, 'y': 2 }, { 'x': 3, 'y': 4 }, { 'x': 5, 'y': 6 }];
+let pullAllWith1 = _.pullAllWith(pullAllWithArr, [{ 'x': 3, 'y': 4 }], _.isEqual);
+console.log('pullAllWith1--->', pullAllWith1);
+//pullAllWith1---> [ { x: 1, y: 2 }, { x: 5, y: 6 } ]
+
+//_.pullAt(array,[indexs])
+let pullAtArr = ['a', 'b', 'c', 'd'];
+let pullAt1 = _.pullAt(pullAtArr, [1, 3]);
+console.log('pullAt1--->', pullAt1);
+//pullAt1---> [ 'b', 'd' ]
+
+//_.remove(array,[predicate=_.indentity])
+let removeArr = [1, 2, 3, 4];
+let remove1 = _.remove(removeArr, function (n) {
+    return n % 2 == 0;
+});
+console.log('removeArr--->', removeArr);
+console.log('remove1--->', remove1);
+//removeArr---> [ 1, 3 ]
+//remove1---> [ 2, 4 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
