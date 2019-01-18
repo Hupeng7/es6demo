@@ -304,6 +304,32 @@ console.log('remove1--->', remove1);
 //removeArr---> [ 1, 3 ]
 //remove1---> [ 2, 4 ]
 
+//_.reverse(array)
+let reverse1 = _.reverse([1, 2, 3]);
+console.log('reverse1--->', reverse1);
+//reverse1---> [ 3, 2, 1 ]
+
+//_.slice(array,[start=0],[end=array.length])
+let slice1 = _.slice([1, 2, 3, 4], 1, 3);
+console.log('slice1--->', slice1);
+//slice1---> [ 2, 3 ]
+console.log('slice2--->', _.slice([1, 2, 3, 4], 1, 10));
+//slice2---> [ 2, 3, 4 ]
+console.log('slice2--->', _.slice([1, 2, 3, 4], 0, -4));
+//slice2---> []  负数从右到左
+
+//.sortedIndex(array,value)
+console.log('sortedIndex1--->', _.sortedIndex([30, 50], 25));
+//sortedIndex1---> 0
+console.log('sortedIndex2--->', _.sortedIndex([30, 50], 40));
+//sortedIndex2---> 1
+console.log('sortedIndex3--->', _.sortedIndex([30, 50], 55));
+//sortedIndex3---> 2
+
+//_.sortedIndexBy(array,value,[iteratee=_.indentity])
+let sortedIndexByArr = [{ 'x': 4 }, { 'x': 5 }];
+let sortedIndexBy1 = _.sortedIndexBy(sortedIndexByArr, { 'x': 4 }, function (o) { return o.x });
+console.log('sortedIndexBy1--->', sortedIndexBy1);
 
 
 
