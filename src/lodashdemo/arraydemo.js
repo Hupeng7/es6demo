@@ -330,6 +330,228 @@ console.log('sortedIndex3--->', _.sortedIndex([30, 50], 55));
 let sortedIndexByArr = [{ 'x': 4 }, { 'x': 5 }];
 let sortedIndexBy1 = _.sortedIndexBy(sortedIndexByArr, { 'x': 4 }, function (o) { return o.x });
 console.log('sortedIndexBy1--->', sortedIndexBy1);
+//sortedIndexBy1---> 0
+let sortedIndexBy2 = _.sortedIndexBy(sortedIndexByArr, { 'x': 4 }, 'x');
+console.log('sortedIndexBy2--->', sortedIndexBy2);
+//sortedIndexBy2---> 0
+
+//_.sortedIndexOf(array,value)
+let sortedIndexOf1 = _.sortedIndexOf([4, 5, 5, 5, 6], 5);
+console.log('sortedIndexOf1--->', sortedIndexOf1);
+//sortedIndexOf1---> 1
+
+//_.sortedLastIndex(array,value)
+let sortedLastIndex1 = _.sortedLastIndex([4, 5, 5, 5, 6], 5);
+console.log('sortedLastIndex1--->', sortedLastIndex1);
+//sortedLastIndex1---> 4
+
+//_.sortedLastIndexBy(array,value,[iteratee=_.indextity])
+let sortedLastIndexByArr = [{ 'x': 4 }, { 'x': 5 }];
+let sortedLastIndexBy1 = _.sortedLastIndexBy(sortedLastIndexByArr, { 'x': 4 }, function (o) { return o.x });
+console.log('sortedLastIndexBy1--->', sortedLastIndexBy1);
+//sortedLastIndexBy1---> 1
+let sortedLastIndexBy2 = _.sortedLastIndexBy(sortedLastIndexByArr, { 'x': 4 }, 'x');
+console.log('sortedLastIndexBy2--->', sortedLastIndexBy2);
+//sortedLastIndexBy2---> 1
+
+//_.sortedLastIndexOf(array,value)
+let sortedLastIndexOf1 = _.sortedLastIndexOf([4, 5, 5, 5, 6], 5);
+console.log('sortedLastIndexOf1--->', sortedLastIndexOf1);
+//sortedLastIndexOf1---> 3
+
+//_.sortedUniq(array)
+let sortedUniq1 = _.sortedUniq([1, 1, 2]);
+console.log('sortedUniq1--->', sortedUniq1);
+//sortedUniq1---> [ 1, 2 ]
+
+//_.sortedUniqBy(array,[iteratee])
+let sortedUniqBy1 = _.sortedUniqBy([1.1, 1.2, 2.3, 2.4], Math.floor);
+console.log('sortedUniqBy1--->', sortedUniqBy1);
+//sortedUniqBy1---> [ 1.1, 2.3 ]
+
+//_.tail(array)
+let tail1 = _.tail([1, 2, 3]);
+console.log('tail1--->', tail1);
+//tail1---> [ 2, 3 ]
+
+//_.take(array,[n=1])
+let take1 = _.take([1, 2, 3]);
+console.log('take1--->', take1);
+//take1---> [ 1 ]
+let take2 = _.take([1, 2, 3], 2);
+console.log('take2--->', take2);
+//take2---> [ 1, 2 ]
+let take3 = _.take([1, 2, 3], 5);
+console.log('take3--->', take3);
+//take3---> [ 1, 2, 3 ]
+let take4 = _.take([1, 2, 3], 0);
+console.log('take4--->', take4);
+//take4---> []
+
+//_.takeRight(array,[n=1])
+let takeRight1 = _.takeRight([1, 2, 3]);
+console.log('takeRight1--->', takeRight1);
+//takeRight1---> [ 3 ]
+let takeRight2 = _.takeRight([1, 2, 3], 2);
+console.log('takeRight2--->', takeRight2);
+//takeRight2---> [ 2, 3 ]
+let takeRight3 = _.takeRight([1, 2, 3], 5);
+console.log('takeRight3--->', takeRight3);
+//takeRight3---> [ 1, 2, 3 ]
+let takeRight4 = _.takeRight([1, 2, 3], 0);
+console.log('takeRight4', takeRight4);
+//takeRight4 []
+
+//_.takeRightWhile(array,[predicate=_.indentity])
+let takeRightWhileArr = [
+    { 'user': 'barney', 'active': true },
+    { 'user': 'fred', 'active': false },
+    { 'user': 'pebbles', 'active': false }
+];
+let takeRightWhile1 = _.takeRightWhile(takeRightWhileArr, function (o) { return !o.active });
+console.log('tabkeRightWhile1--->', takeRightWhile1);
+//tabkeRightWhile1---> [ { user: 'fred', active: false },
+// { user: 'pebbles', active: false } ]
+let takeRightWhile2 = _.takeRightWhile(takeRightWhileArr, { 'user': 'pebbles', 'active': false });
+console.log('takeRightWhile2--->', takeRightWhile2);
+//takeRightWhile2---> [ { user: 'pebbles', active: false } ]
+let takeRightWhile3 = _.takeRightWhile(takeRightWhileArr, ['active', false]);
+console.log('takeRightWhile3--->', takeRightWhile3);
+//takeRightWhile3---> [ { user: 'fred', active: false },
+//  { user: 'pebbles', active: false } ]
+let takeRightWhile4 = _.takeRightWhile(takeRightWhileArr, 'active');
+console.log('takeRightWhile4--->', takeRightWhile4);
+//takeRightWhile4---> []
+
+//_.takeWhile(array,[predicate=_.indentity])
+let takeWhileArr = [
+    { 'user': 'barney', 'active': false },
+    { 'user': 'fred', 'active': false },
+    { 'user': 'pebbles', 'active': true }
+];
+let takeWhile1 = _.takeWhile(takeWhileArr, function (o) { return !o.active });
+console.log('takeWhile1--->', takeWhile1);
+//takeWhile1---> [ { user: 'barney', active: false },
+//  { user: 'fred', active: false } ]
+let takeWhile2 = _.takeWhile(takeWhileArr, { 'user': 'barney', 'active': false });
+console.log('takeWhile2--->', takeWhile2);
+//takeWhile2---> [ { user: 'barney', active: false } ]
+let takeWhile3 = _.takeWhile(takeWhileArr, ['active', false]);
+console.log('takeWhile3--->', takeWhile3);
+//takeWhile3---> [ { user: 'barney', active: false },
+//  { user: 'fred', active: false } ]
+let takeWhile4 = _.takeWhile(takeWhileArr, 'active');
+console.log('takeWhile4--->', takeWhile4);
+//takeWhile4---> []
+
+//_.union([arrays])
+let union1 = _.union([2], [1, 2]);
+console.log('union1--->', union1);
+//union1---> [ 2, 1 ]
+
+//_.unionBy([arrays],[iteratee=_.identity])
+let unionBy1 = _.unionBy([2.1], [1.2, 2.3], Math.floor);
+console.log('unionBy1--->', unionBy1);
+//unionBy1---> [ 2.1, 1.2 ]
+let unionBy2 = _.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+console.log('unionBy2--->', unionBy2);
+//unionBy2---> [ { x: 1 }, { x: 2 } ]
+
+//_.unionWith([arrays],[comparator])
+let unionWith1 = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
+let unionWith2 = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+let unionWith3 = _.unionWith(unionWith1, unionWith2, _.isEqual);
+console.log('unionWith3--->', unionWith3);
+//unionWith3---> [ { x: 1, y: 2 }, { x: 2, y: 1 }, { x: 1, y: 1 } ]
+
+//_.uniq(array)
+let uniq1 = _.uniq([2, 1, 2]);
+console.log('uniq1--->', uniq1);
+//uniq1---> [ 2, 1 ]
+
+//_.uniqBy(array,[iteratee=_.identity])
+let uniqBy1 = _.uniqBy([2.1, 1.2, 2.3], Math.floor);
+console.log('uniqBy1--->', uniqBy1);
+//uniqBy1---> [ 2.1, 1.2 ]
+let uniqBy2 = _.uniqBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], 'x');
+console.log('uniqBy2--->', uniqBy2);
+//uniqBy2---> [ { x: 1 }, { x: 2 } ]
+
+//_.uniqWith(array,[comparator])
+let uniqWithArr = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 2 }];
+let uniqWith1 = _.uniqWith(uniqWithArr, _.isEqual);
+console.log('uniqWith1--->', uniqWith1);
+//uniqWith1---> [ { x: 1, y: 2 }, { x: 2, y: 1 } ]
+
+//_.unzip(array)
+let zipped = _.zip(['a', 'b'], [1, 2], [true, false]);
+console.log('zipped--->', zipped);
+//zipped---> [ [ 'a', 1, true ], [ 'b', 2, false ] ]
+let unzip1 = _.unzip(zipped);
+console.log('unzip1--->', unzip1);
+//unzip1---> [ [ 'a', 'b' ], [ 1, 2 ], [ true, false ] ]
+
+//_.unzipWith(array,[iteratee=_.indentity])
+let zipped1 = _.zip([1, 2], [10, 20], [100, 200]);
+console.log('zipped1--->', zipped1);
+//zipped1---> [ [ 1, 10, 100 ], [ 2, 20, 200 ] ]
+let unzipWith1 = _.unzipWith(zipped1, _.add);
+console.log('unzipWith1--->', unzipWith1);
+//unzipWith1---> [ 3, 30, 300 ]
+
+//_.with(array,[values])
+let without1 = _.without([2, 1, 2, 3], 1, 2);
+console.log('without1--->', without1);
+//without1---> [ 3 ]
+
+//_.xor([arrays])
+let xor1 = _.xor([2, 1], [2, 3]);
+console.log('xor1--->', xor1);
+//xor1---> [ 1, 3 ]
+
+//_.xorBy([arrays],[iteratee=_indentity])
+let xorBy1 = _.xorBy([2.1, 1.2], [2.3, 3.4], Math.floor);
+console.log('xorBy1--->', xorBy1);
+//xorBy1---> [ 1.2, 3.4 ]
+let xorBy2 = _.xorBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+console.log('xorBy2--->', xorBy2);
+//xorBy2---> [ { x: 2 } ]
+
+//_.xorWith(array,[comparator])
+let xorWith1 = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
+let xorWith2 = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+let xorWith3 = _.xorWith(xorWith1, xorWith2, _.isEqual);
+console.log('xorWith3--->', xorWith3);
+//xorWith3---> [ { x: 2, y: 1 }, { x: 1, y: 1 } ]
+
+//_.zip([arrays])
+let zip1 = _.zip(['a', 'b'], [1, 2], [true, false]);
+console.log('zip1--->', zip1);
+//zip1---> [ [ 'a', 1, true ], [ 'b', 2, false ] ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
