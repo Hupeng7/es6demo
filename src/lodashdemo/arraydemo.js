@@ -529,8 +529,22 @@ let zip1 = _.zip(['a', 'b'], [1, 2], [true, false]);
 console.log('zip1--->', zip1);
 //zip1---> [ [ 'a', 1, true ], [ 'b', 2, false ] ]
 
+//_.zipObeject([props=[]],[values=[]])
+let zipObeject1 = _.zipObject(['a', 'b'], [1, 2]);
+console.log('zipObject1--->', zipObeject1);
+//zipObject1---> { a: 1, b: 2 }
 
+//_.zipObjectDeep([props=[]],[values=[]])
+let zipObjectDeep1 = _.zipObjectDeep(['a.b[0].c', 'a.b[1].d'], [1, 2]);
+console.log('zipOjectDeep1--->', zipObjectDeep1);
+//{ 'a': { 'b': [{ 'c': 1 }, { 'd': 2 }] } }
 
+//_.zipWith([arrays],[iteratee=_.identity])
+let zipWith1 = _.zipWith([1, 2], [10, 20], [100, 200], function (a, b, c) {
+    return a + b + c;
+});
+console.log('zipWith1--->', zipWith1);
+//zipWith1---> [ 111, 222 ]
 
 
 

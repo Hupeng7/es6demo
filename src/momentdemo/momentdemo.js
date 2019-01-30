@@ -72,5 +72,35 @@ const quarterEnd2 = moment().quarter(moment().quarter() + 1).endOf('quarter').fo
 console.log('quarterEnd2--->', quarterEnd2);
 
 let cur_month_start_time = moment().month(moment().month()).startOf('month').format('YYYY-MM-DD HH:mm:ss');
-console.log('本月开始时间--->',cur_month_start_time);
+console.log('本月开始时间--->', cur_month_start_time);
 //本月开始时间---> 2019-01-01 00:00:00
+
+//unix 时间戳(秒)
+var unix = moment().unix();
+console.log('unix--->', unix);
+//unix---> 1548647047
+const unix1 = moment(1318874398806).unix();
+console.log('unix1--->', unix1);
+//unix1---> 1318874398
+
+//unix偏移量(毫秒)
+var unix2 = moment().valueOf();
+var unix3 = +moment();
+console.log('unix2--->', unix2);
+console.log('unix3--->', unix3);
+// unix2---> 1548647358934
+// unix3---> 1548647358934
+var unix4 = moment(1318874398806).valueOf();
+var unix5 = +moment(1318874398806);
+console.log('unix4--->', unix4);
+console.log('unix5--->', unix5);
+// unix4---> 1318874398806
+// unix5---> 1318874398806
+
+//毫秒
+var ms1 = moment().millisecond();
+var ms2 = moment().milliseconds();
+console.log('ms1--->', ms1);
+console.log('ms2--->', ms2);
+// ms1---> 762
+// ms2---> 762
