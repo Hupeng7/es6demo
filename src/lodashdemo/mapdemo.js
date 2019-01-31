@@ -228,9 +228,115 @@ console.log('partition4--->', partition4);
 //  [ { user: 'barney', age: 36, active: false },
 //    { user: 'pebbles', age: 1, active: false } ] ]
 
+//._reduce(collection,[iteratee=_.identity],[accumelator])
+let reduce1 = _.reduce([1, 2], function (sum, n) {
+    return sum + n;
+}, 0);
+console.log('reduce1--->', reduce1);
+//reduce1---> 3
+let reduce2 = _.reduce({ 'a': 1, 'b': 2, 'c': 1 }, function (result, value, key) {
+    (result[value] || (result[value] = [])).push(key);
+    return result;
+}, {});
+console.log('reduce2--->', reduce2);
+//reduce2---> { '1': [ 'a', 'c' ], '2': [ 'b' ] }
 
-let a = [];
-console.log(a && a.length==0);
+//_.reduceRight(collection,[iteratee=_.identity],[accumulator])
+let reduceRightArr = [[0, 1], [2, 3], [4, 5]];
+let reduceRight1 = _.reduceRight(reduceRightArr, function (flattened, other) {
+    return flattened.concat(other);
+}, []);
+console.log('reduceRight1--->', reduceRight1);
+//reduceRight1---> [ 4, 5, 2, 3, 0, 1 ]
+
+//_.reject(collection,[predicate=_.identity])
+let rejectArr = [
+    { 'user': 'barney', 'age': 36, 'active': false },
+    { 'user': 'fred', 'age': 40, 'active': true }
+];
+let reject1 = _.reject(rejectArr, function (o) { return !o.active })
+console.log('reject1--->', reject1);
+//reject1---> [ { user: 'fred', age: 40, active: true } ]
+let reject2 = _.reject(rejectArr, { 'age': 40, 'active': true });
+console.log('reject2--->', reject2);
+//reject2---> [ { user: 'barney', age: 36, active: false } ]
+let reject3 = _.reject(rejectArr, ['active', false]);
+console.log('reject3--->', reject3);
+//reject3---> [ { user: 'fred', age: 40, active: true } ]
+let reject4 = _.reject(rejectArr, 'active');
+console.log('reject4--->', reject4);
+//reject4---> [ { user: 'barney', age: 36, active: false } ]
+
+//_.sample(collection)
+let sample1 = _.sample([1, 2, 3, 4]);
+console.log('sample1--->', sample1);
+//sample1---> 1  // return the random element
+
+//_.sampleSize(collection,[n=1])
+let sampleSize1 = _.sampleSize([1, 2, 3], 2);
+console.log('sampleSize1--->', sampleSize1);
+//sampleSize1---> [ 1, 2 ]
+let sampleSize2 = _.sampleSize([1, 2, 3], 4);
+console.log('sampleSize2--->', sampleSize2);
+//sampleSize2---> [ 3, 2, 1 ]
+
+//_.shuffle(collection)
+let shuffle1 = _.shuffle([1, 2, 3, 4]);
+console.log('shuffle1--->', shuffle1);
+//
+
+//_.size(collection)
+let size1 = _.size([1, 2, 3]);
+console.log('size1--->', size1);
+//size1---> 3
+let size2 = _.size({ 'a': 1, 'b': 2 });
+console.log('size2--->', size2);
+//size2---> 2
+let size3 = _.size('pebbles');
+console.log('size3--->', size3);
+//size3---> 7
+
+//_.some(collection,[predicate=_.indentity])
+let some1 = _.some([null, 0, 'yes', false], Boolean);
+console.log('some1--->', some1);
+//some1---> true
+let someArr = [
+    { 'user': 'barney', 'active': true },
+    { 'user': 'fred', 'active': false }
+];
+let some2 = _.some(someArr, { 'user': 'barney', 'active': false });
+console.log('some2--->', some2);
+//some2---> false
+let some3 = _.some(someArr, ['active', false]);
+console.log('some3--->', some3);
+//some3---> true
+let some4 = _.some(someArr, 'active');
+console.log('some4--->', some4);
+//some4---> true
+
+//_.sortBy(collection,[iteratees=[_.indentity]])
+let sortByArr = [
+    { 'user': 'fred', 'age': 48 },
+    { 'user': 'barney', 'age': 36 },
+    { 'user': 'fred', 'age': 40 },
+    { 'user': 'barney', 'age': 34 }
+];
+let sortBy1 = _.sortBy(sortByArr, [function (o) { return o.user; }]);
+console.log('sortBy1--->', sortBy1);
+//sortBy1---> [ { user: 'barney', age: 36 },
+//   { user: 'barney', age: 34 },
+//   { user: 'fred', age: 48 },
+//   { user: 'fred', age: 40 } ]
+let sortBy2 = _.sortBy(sortByArr, ['user', 'age']);
+console.log('sortBy2--->', sortBy2);
+//sortBy2---> [ { user: 'barney', age: 34 },
+//   { user: 'barney', age: 36 },
+//   { user: 'fred', age: 40 },
+//   { user: 'fred', age: 48 } ]
+
+
+
+
 
 
 
