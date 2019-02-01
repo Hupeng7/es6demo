@@ -384,13 +384,44 @@ var isObjectLike4 = _.isObjectLike(null);
 console.log('isObjectLike4--->',isObjectLike4);
 //isObjectLike4---> false
 
+//_.isPlainObject(value)
+function Foo(){
+    this.a = 1;
+}
+let isPlainObject1 = _.isPlainObject(new Foo);
+console.log('isPlainObject1--->',isPlainObject1);
+//isPlainObject1---> false
+let isPlainObject2 = _.isPlainObject([1,2,3]);
+console.log('isPlainObject2--->',isPlainObject2);
+//isPlainObject2---> false
+let isPlainObject3 = _.isPlainObject({'x':0,'y':0});
+console.log('isPlainObject3--->',isPlainObject3);
+//isPlainObject3---> true
+let isPlainObject4 = _.isPlainObject(Object.create(null));
+console.log('isPlainObject4--->',isPlainObject4);
+//isPlainObject4---> true
 
+//_.isRegExp(value)
+let isRegExp1 = _.isRegExp(/abc/);
+console.log('isRegExp1--->',isRegExp1);
+//isRegExp1---> true
+let isRegExp2 = _.isRegExp('/abc/');
+console.log('isRegExp2--->',isRegExp2);
+//isRegExp2---> false
 
-
-
-
-
-
+//_.isSafeInteger(value)
+let isSafeInteger1 = _.isSafeInteger(3);
+console.log('isSafeInteger1--->',isSafeInteger1);
+//isSafeInteger1---> true
+let isSafeInteger2 = _.isSafeInteger(Number.MIN_VALUE);
+console.log('isSafeInteger2--->',isSafeInteger2);
+//isSafeInteger2---> false
+let isSafeInteger3 = _.isSafeInteger(Infinity);
+console.log('isSafeInteger3--->',isSafeInteger3);
+//isSafeInteger3---> false
+let isSafeInteger4 = _.isSafeInteger('3');
+console.log('isSafeInteger4--->',isSafeInteger4);
+//isSafeInteger4---> false
 
 
 
