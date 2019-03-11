@@ -75,6 +75,10 @@ let cur_month_start_time = moment().month(moment().month()).startOf('month').for
 console.log('本月开始时间--->', cur_month_start_time);
 //本月开始时间---> 2019-01-01 00:00:00
 
+// 天
+const dayStart = moment().day(moment().day() - 1).startOf('day').format('YYYY-MM-DD HH:mm:ss');
+console.log('dayStart--->', dayStart);
+
 //unix 时间戳(秒)
 var unix = moment().unix();
 console.log('unix--->', unix);

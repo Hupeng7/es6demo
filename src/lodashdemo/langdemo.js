@@ -372,56 +372,252 @@ console.log('isObject4--->', isObject4);
 
 //_.isObjectLike(value)
 var isObjectLike1 = _.isObjectLike({});
-console.log('isObjectLike1--->',isObjectLike1);
+console.log('isObjectLike1--->', isObjectLike1);
 //isObjectLike1---> true
-var isObjectLike2 = _.isObjectLike([1,2,3]);
-console.log('isObjectLike1--->',isObjectLike2);
+var isObjectLike2 = _.isObjectLike([1, 2, 3]);
+console.log('isObjectLike1--->', isObjectLike2);
 //isObjectLike1---> true
 var isObjectLike3 = _.isObjectLike(_.noop);
-console.log('isObjectLike3--->',isObjectLike3);
+console.log('isObjectLike3--->', isObjectLike3);
 //isObjectLike3---> false
 var isObjectLike4 = _.isObjectLike(null);
-console.log('isObjectLike4--->',isObjectLike4);
+console.log('isObjectLike4--->', isObjectLike4);
 //isObjectLike4---> false
 
 //_.isPlainObject(value)
-function Foo(){
+function Foo() {
     this.a = 1;
 }
 let isPlainObject1 = _.isPlainObject(new Foo);
-console.log('isPlainObject1--->',isPlainObject1);
+console.log('isPlainObject1--->', isPlainObject1);
 //isPlainObject1---> false
-let isPlainObject2 = _.isPlainObject([1,2,3]);
-console.log('isPlainObject2--->',isPlainObject2);
+let isPlainObject2 = _.isPlainObject([1, 2, 3]);
+console.log('isPlainObject2--->', isPlainObject2);
 //isPlainObject2---> false
-let isPlainObject3 = _.isPlainObject({'x':0,'y':0});
-console.log('isPlainObject3--->',isPlainObject3);
+let isPlainObject3 = _.isPlainObject({ 'x': 0, 'y': 0 });
+console.log('isPlainObject3--->', isPlainObject3);
 //isPlainObject3---> true
 let isPlainObject4 = _.isPlainObject(Object.create(null));
-console.log('isPlainObject4--->',isPlainObject4);
+console.log('isPlainObject4--->', isPlainObject4);
 //isPlainObject4---> true
 
 //_.isRegExp(value)
 let isRegExp1 = _.isRegExp(/abc/);
-console.log('isRegExp1--->',isRegExp1);
+console.log('isRegExp1--->', isRegExp1);
 //isRegExp1---> true
 let isRegExp2 = _.isRegExp('/abc/');
-console.log('isRegExp2--->',isRegExp2);
+console.log('isRegExp2--->', isRegExp2);
 //isRegExp2---> false
 
 //_.isSafeInteger(value)
 let isSafeInteger1 = _.isSafeInteger(3);
-console.log('isSafeInteger1--->',isSafeInteger1);
+console.log('isSafeInteger1--->', isSafeInteger1);
 //isSafeInteger1---> true
 let isSafeInteger2 = _.isSafeInteger(Number.MIN_VALUE);
-console.log('isSafeInteger2--->',isSafeInteger2);
+console.log('isSafeInteger2--->', isSafeInteger2);
 //isSafeInteger2---> false
 let isSafeInteger3 = _.isSafeInteger(Infinity);
-console.log('isSafeInteger3--->',isSafeInteger3);
+console.log('isSafeInteger3--->', isSafeInteger3);
 //isSafeInteger3---> false
 let isSafeInteger4 = _.isSafeInteger('3');
-console.log('isSafeInteger4--->',isSafeInteger4);
+console.log('isSafeInteger4--->', isSafeInteger4);
 //isSafeInteger4---> false
+
+//_.isSet(value)
+let isSet1 = _.isSet(new Set);
+console.log('isSet1--->', isSet1);
+//isSet1---> true
+let isSet2 = _.isSet(new WeakSet);
+console.log('isSet2--->', isSet2);
+//isSet2---> false
+
+//_.isString(value)
+let isString1 = _.isString('abc');
+console.log('isString1--->', isString1);
+//isString1---> true
+let isString2 = _.isString(1);
+console.log('isString2--->', isString2);
+//isString2---> false
+
+//_.isSymbol(value)
+let isSymbol1 = _.isSymbol(Symbol.iterator);
+console.log('isSymbol1--->', isSymbol1);
+//isSymbol1---> true
+let isSymbol2 = _.isSymbol('abc');
+console.log('isSymbol2--->', isSymbol2);
+//isSymbol2---> false
+
+//_.isTypeArray(value)
+let isTypedArray1 = _.isTypedArray(new Uint8Array);
+console.log('isTypedArray1--->', isTypedArray1);
+//isTypedArray1---> true
+let isTypedArray2 = _.isTypedArray([]);
+console.log('isTypedArray2--->', isTypedArray2);
+//isTypedArray2---> false
+
+//_.isUndefined(value)
+let isUndefined1 = _.isUndefined(void 0);
+console.log('isUndefined1--->', isUndefined1);
+//isUndefined1---> true
+let isUndefined2 = _.isUndefined(null);
+console.log('isUndefined2--->', isUndefined2);
+//isUndefined2---> false
+
+//_.isWeakMap(value)
+_.isWeakMap(new WeakMap);
+// => true
+
+_.isWeakMap(new Map);
+// => false
+
+//_.isWeakSet(value)
+_.isWeakSet(new WeakSet);
+// => true
+
+_.isWeakSet(new Set);
+// => false
+
+//_.lt(value,other)
+let lt1 = _.lt(1, 3);
+console.log('lt1--->', lt1);
+//lt1---> true
+let lt2 = _.lt(3, 3);
+console.log('lt2--->', lt2);
+//lt2---> false
+let lt3 = _.lt(3, 1);
+console.log('lt3--->', lt3);
+//lt3---> false
+
+//_.lte(value,other)
+let lte1 = _.lte(1, 3);
+console.log('lte1--->', lte1);
+//lte1---> true
+let lte2 = _.lte(3, 3);
+console.log('lte2--->', lte2);
+//lte2---> true
+let lte3 = _.lte(3, 1);
+console.log('lte3--->', lte3);
+//lte3---> false
+
+//_.toArray(value)
+let toArray1 = _.toArray({ 'a': 1, 'b': 2 });
+console.log('toArray1--->', toArray1);
+//toArray1---> [ 1, 2 ]
+let toArray2 = _.toArray('abc');
+console.log('toArray2--->', toArray2);
+//toArray2---> [ 'a', 'b', 'c' ]
+let toArray3 = _.toArray(1);
+console.log('toArray3--->', toArray3);
+//toArray3---> []
+let toArray4 = _.toArray(null);
+console.log('toArray4--->', toArray4);
+//toArray4---> []
+
+//_.toFinite(value)
+let toFinite1 = _.toFinite(3.2);
+console.log('toFinite1--->', toFinite1);
+//toFinite1---> 3.2
+let toFinite2 = _.toFinite(Number.MIN_VALUE);
+console.log('toFinite2--->', toFinite2);
+//toFinite2---> 5e-324
+let toFinite3 = _.toFinite(Infinity);
+console.log('toFinite3--->', toFinite3);
+//toFinite3---> 1.7976931348623157e+308
+let toFinite4 = _.toFinite('3.2');
+console.log('toFinite4--->', toFinite4);
+//toFinite4---> 3.2
+
+//_.toInteger(value)
+let toInteger1 = _.toInteger(3.2);
+console.log('toInteger1--->', toInteger1);
+//toInteger1---> 3
+let toInteger2 = _.toInteger(Number.MIN_VALUE);
+console.log('toInteger2--->', toInteger2);
+//toInteger2---> 0
+let toInteger3 = _.toInteger(Infinity);
+console.log('toInteger3--->', toInteger3);
+//toInteger3---> 1.7976931348623157e+308
+let toInteger4 = _.toInteger('3.2');
+console.log('toInteger4--->', toInteger4);
+//toInteger4---> 3
+
+//_.toLength(value)
+let toLength1 = _.toLength(3.2);
+console.log('toLength1--->', toLength1);
+//toLength1---> 3
+let toLength2 = _.toLength(Number.MIN_VALUE);
+console.log('toLength2--->', toLength2);
+//toLength2---> 0
+let toLength3 = _.toLength(Infinity);
+console.log('toLength3--->', toLength3);
+//toLength3---> 4294967295
+let toLength4 = _.toLength('3.2');
+console.log('toLength4--->', toLength4);
+//toLength4---> 3
+
+//_.toNumber(value)
+let toNumber1 = _.toNumber(3.2);
+console.log('toNumber1--->', toNumber1);
+//toNumber1---> 3.2
+let toNumber2 = _.toNumber(Number.MIN_VALUE);
+console.log('toNumber2--->', toNumber2);
+//toNumber2---> 5e-324
+let toNumber3 = _.toNumber(Infinity);
+console.log('toNumber3--->', toNumber3);
+//toNumber3---> Infinity
+let toNumber4 = _.toNumber('3.2');
+console.log('toNumber4--->', toNumber4);
+//toNumber4---> 3.2
+
+//_.toPlainObject(value)
+function Foo() {
+    this.b = 2;
+}
+Foo.prototype.c = 3;
+let toPlainObject1 = _.assign({ 'a': 1 }, new Foo);
+console.log('toPlainObject1--->', toPlainObject1);
+//toPlainObject1---> { a: 1, b: 2 }
+let toPlainObject2 = _.assign({ 'a': 1 }, _.toPlainObject(new Foo));
+console.log('toPlainObject2--->', toPlainObject2);
+//toPlainObject2---> { a: 1, b: 2, c: 3 }
+
+//_.toSafeInteger(value)
+let toSafeInteger1 = _.toSafeInteger(3.2);
+console.log('toSafeInteger1--->', toSafeInteger1);
+//toSafeInteger1---> 3
+let toSafeInteger2 = _.toSafeInteger(Number.MIN_VALUE);
+console.log('toSafeInteger2--->', toSafeInteger2);
+//toSafeInteger2---> 0
+let toSafeInteger3 = _.toSafeInteger(Infinity);
+console.log('toSafeInteger3--->', toSafeInteger3);
+//toSafeInteger3---> 9007199254740991
+let toSafeInteger4 = _.toSafeInteger('3.2');
+console.log('toSafeInteger4--->', toSafeInteger4);
+//toSafeInteger4---> 3
+
+//_.toString(value)
+let toString1 = _.toString(null);
+console.log('toString1--->', toString1);
+//toString1--->
+let toString2 = _.toString(-0);
+console.log('toString2--->', toString2);
+//toString2---> -0
+let toString3 = _.toString([1, 2, 3]);
+console.log('toString3--->',toString3);
+//toString3---> 1,2,3
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
