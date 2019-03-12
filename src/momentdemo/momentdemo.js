@@ -79,6 +79,10 @@ console.log('本月开始时间--->', cur_month_start_time);
 const dayStart = moment().day(moment().day() - 1).startOf('day').format('YYYY-MM-DD HH:mm:ss');
 console.log('dayStart--->', dayStart);
 
+// Date 类型  前一天 开始和结束
+const yesterdayStart = moment(moment().day(moment().day() - 4).startOf('day').format('YYYY-MM-DD HH:mm:ss')).millisecond(0).toDate();
+const yesterdayEnd = moment(moment().day(moment().day() - 1).endOf('day').format('YYYY-MM-DD HH:mm:ss')).millisecond(0).toDate();
+
 //unix 时间戳(秒)
 var unix = moment().unix();
 console.log('unix--->', unix);
