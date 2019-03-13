@@ -30,7 +30,7 @@ console.log('result is: ', result);
  */
 handleEvent = () => {
     this.setState({
-        data: this.state.data.set("key", "value");
+        data: this.state.data.set("key", "value"),
     })
 };
 //简化为：
