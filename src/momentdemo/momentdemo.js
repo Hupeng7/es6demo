@@ -112,3 +112,6 @@ console.log('ms1--->', ms1);
 console.log('ms2--->', ms2);
 // ms1---> 762
 // ms2---> 762
+
+let nowFormat1 = moment().format('YYYYMMDD');
+console.log('nowFormat1--->', nowFormat1);
