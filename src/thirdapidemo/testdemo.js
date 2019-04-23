@@ -5,6 +5,7 @@ var DateDemo = require('./datedemo');
 var ArrayDemo = require('./arraydemo');
 var StringDemo = require('./stringdemo');
 var NumberDemo = require('./numberdemo');
+var moment = require('moment');
 
 const str = "hello";
 console.log('check type--->', TypeDemo.isString(str));
@@ -34,6 +35,8 @@ console.log('number1--->', number1);
 let string2 = "hehadaijd.jpg";
 console.log('string2---', string2.lastIndexOf('.'));
 console.log('string2-1---',string2.substr(string2.lastIndexOf('.')));
+
+console.log('date format---',moment().format('YYYY-MM-DD HH:mm:ss'));
 
 
 
