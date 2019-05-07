@@ -36,7 +36,7 @@ let set2 = new Set();
 console.log(set2.add(1).add(2)); // Set [1,2]
 
 console.log(set2.delete(2)); // true
-console.log(set2.has(2)); //false
+console.log(set2.has(2));    //false
 
 console.log(set2.clear()); //undefined
 console.log(set2.has(1)); // false

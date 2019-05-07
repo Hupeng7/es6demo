@@ -8,10 +8,12 @@ var _ = require('lodash');
  */
 let list = [
     { id: 1, order: { "card_id": 1, "name": "zhangsan1", "idno": 1234 } },
-    { id: 2, order: { "card_id": 1, "name": "zhangsan2", "idno": 1234 } },
+    { id: 2, order: { "card_id": 1, "name": "zhangsan", "idno": 1234 } },
     { id: 3, order: { "card_id": 1, "name": "zhangsan3", "idno": 1234 } },
     { id: 4, order: { "card_id": 1, "name": "zhangsan1", "idno": 1234 } },
-    { id: 1, order: { "card_id": 1, "name": "zhangsan", "idno": 1234 } },
+    { id: 5, order: { "card_id": 1, "name": "zhangsan", "idno": 1234 } },
+    { id: 6, order: { "card_id": 2, "name": "zhangsan", "idno": 1234 } },
+    { id: 7, order: { "card_id": 2, "name": "zhangsan", "idno": 1234 } },
 ];
 
 let listU = _.uniqBy(list, 'order.card_id', 'order.name');
@@ -22,7 +24,8 @@ for (let i = 0, len = list.length; i < len; i++) {
     for (let j = 0, len1 = listU1.length; j < len1; j++) {
         if (list[i].order.card_id == listU1[j].order.card_id
             && list[i].order.name == listU1[j].order.name
-            && list[i].order.idno == listU1[j].order.idno) {
+            && list[i].order.idno == listU1[j].order.idno
+            && (list[i].order.id != 2)) {
             flag = false;
         };
     };
