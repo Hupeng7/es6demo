@@ -115,3 +115,17 @@ console.log('ms2--->', ms2);
 
 let nowFormat1 = moment().format('YYYYMMDD');
 console.log('nowFormat1--->', nowFormat1);
+
+//两个时间相减得到天数
+function GetNumberOfDays(date1,date2){//获得天数
+    //date1：开始日期，date2结束日期
+    var a1 = Date.parse(new Date(date1));
+    var a2 = Date.parse(new Date(date2));
+    var day = parseInt((a2-a1)/ (1000 * 60 * 60 * 24));//核心：时间戳相减，然后除以天数
+    return day
+};
+
+var a1="12-19-2018";
+var a2="2019/1/7";
+var b=GetNumberOfDays(a1,a2)
+console.log(b);
