@@ -117,15 +117,28 @@ let nowFormat1 = moment().format('YYYYMMDD');
 console.log('nowFormat1--->', nowFormat1);
 
 //两个时间相减得到天数
-function GetNumberOfDays(date1,date2){//获得天数
+function GetNumberOfDays(date1, date2) {//获得天数
     //date1：开始日期，date2结束日期
     var a1 = Date.parse(new Date(date1));
     var a2 = Date.parse(new Date(date2));
-    var day = parseInt((a2-a1)/ (1000 * 60 * 60 * 24));//核心：时间戳相减，然后除以天数
+    var day = parseInt((a2 - a1) / (1000 * 60 * 60 * 24));//核心：时间戳相减，然后除以天数
     return day
 };
 
-var a1="12-19-2018";
-var a2="2019/1/7";
-var b=GetNumberOfDays(a1,a2)
+var a1 = "12-19-2018";
+var a2 = "2019/1/7";
+var b = GetNumberOfDays(a1, a2)
 console.log(b);
+
+//获取年 月 日
+
+console.log('日---', moment().date());
+console.log('月---', moment().month());
+console.log('年---', moment().year());
+
+// 弃用
+// console.log('日---', moment().dates());
+// console.log('月---', moment().months());
+// console.log('年---', moment().years());
+
+

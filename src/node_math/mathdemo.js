@@ -286,8 +286,26 @@ console.log(Math.trunc(-0.123));
 //
 console.log(Math.valueOf());
 
+// let br_score = min(max(
+//     (
+//         660 - 100 * log(
+//             (score_brcreditmodelcalculator / (1 - score_brcreditmodelcalculator)
+//             ) /
+//             (0.06 / 0.94))
+//     ), 500), 1000);
 
+let score_brcreditmodelcalculator = 0.3
+function brScore() {
+    return Math.min(Math.max(
+        (
+            600 - 100 * Math.log(
+                (score_brcreditmodelcalculator / (1 - score_brcreditmodelcalculator)
+                ) /
+                (0.06 / 0.94))
+        ), 500), 1000)
+}
 
+console.log('br score--->', brScore());
 
 
 
