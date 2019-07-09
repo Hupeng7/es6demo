@@ -142,3 +142,82 @@ console.log('年---', moment().year());
 // console.log('年---', moment().years());
 
 
+
+// 获取上周一开始   到上周日结束
+const cur_cycle_time_list = [
+    { 'end_time': moment().day(moment().day() - 1).endOf('day').format('YYYY-MM-DD HH:mm:ss'), 'start_time': moment().day(moment().day() - 1).startOf('day').format('YYYY-MM-DD HH:mm:ss') },
+    { 'end_time': moment().week(moment().week() - 1).endOf('week').format('YYYY-MM-DD HH:mm:ss'), 'start_time': moment().week(moment().week() - 1).startOf('week').format('YYYY-MM-DD HH:mm:ss') },
+    { 'end_time': moment().month(moment().month() - 1).endOf('month').format('YYYY-MM-DD HH:mm:ss'), 'start_time': moment().month(moment().month() - 1).startOf('month').format('YYYY-MM-DD HH:mm:ss') }
+];
+for (let i; i < 3; i++) {
+    console.log('end time---', cur_cycle_time_list[i].end_time, 'start time---', cur_cycle_time_list[i].start_time);
+}
+
+
+
+console.log('end time---', moment().day(moment().day() - 1).endOf('day').format('YYYY-MM-DD HH:mm:ss'), 'start time---', moment().day(moment().day() - 1).startOf('day').format('YYYY-MM-DD HH:mm:ss'));
+console.log('end time---', moment().week(moment().week() - 1).endOf('week').format('YYYY-MM-DD HH:mm:ss'), 'start time---', moment().week(moment().week() - 1).startOf('week').format('YYYY-MM-DD HH:mm:ss'));
+console.log('end time---', moment().month(moment().month() - 1).endOf('month').format('YYYY-MM-DD HH:mm:ss'), 'start time---', moment().month(moment().month() - 1).startOf('month').format('YYYY-MM-DD HH:mm:ss'));
+
+const startDate11 = moment().week(moment().week() - 1).startOf('week').valueOf();
+const endDate11 = moment().week(moment().week() - 1).endOf('week').valueOf();
+console.log('startDate11---', new Date(startDate11));
+console.log('endDate11---', new Date(endDate11));
+console.log('end week 22222---', moment().day(moment(endDate11).day() + 1).format('YYYY-MM-DD HH:mm:ss'));
+console.log('start week 2222---', moment().day(moment(startDate11).day() + 1).format('YYYY-MM-DD HH:mm:ss'));
+
+
+const endsss = moment().week(moment().week() - 1).endOf('week').format('YYYY-MM-DD HH:mm:ss');
+const startsss = moment().week(moment().week() - 1).startOf('week').format('YYYY-MM-DD HH:mm:ss');
+//end time--- 2019-06-29 23:59:59 start time--- 2019-06-23 00:00:00
+console.log('endsss', endsss);
+console.log('startsss', startsss);
+
+console.log('start week 333344444---', moment().day(moment(startsss).day() - 6).startOf('day').format('YYYY-MM-DD HH:mm:ss'));
+console.log('end week 333344444---', moment().day(moment(endsss).day() - 6).endOf('day').format('YYYY-MM-DD HH:mm:ss'));
+// start week 333344444--- 2019-06-24 00:00:00
+// end week 333344444--- 2019-06-30 23:59:59
+
+
+var lastWeek = moment().isoWeek(moment().subtract(1, 'w').week());
+var mondayDifference = lastWeek.dayOfYear() - lastWeek.weekday() + 1;
+var sundayDifference = mondayDifference - 1;
+var lastMonday = moment().dayOfYear(mondayDifference);
+var lastSunday = moment().dayOfYear(sundayDifference);
+console.log('lastMonday', lastMonday);
+console.log('lastSunday', lastSunday);
+
+var d = new Date();
+// set to Monday of this week
+d.setDate(d.getDate() - (d.getDay() + 6) % 7);
+// set to previous Monday
+// d.setDate(d.getDate() - 7);
+// d.setDate(d.getDate());
+// create new date of day before
+var last_sunday = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1);
+var last_monday = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 7);
+
+console.log('last_sunday---', last_sunday);
+console.log('last_monday---', last_monday);
+
+
+var date = new Date();
+console.log(date.getMonth() + 1);
+
+var month = moment('2019-01-30').month() + 1;
+console.log(month);
+
+moment().week(); // Number
+moment().isoWeek(); // Number
+console.log('moment().week()---', moment().week());
+console.log('moment().isoWeek()---', moment().isoWeek());
+
+// 上周 开始时间 周一 00:00:00 和结束时间 周日 23:59:59  
+const nextWeekendfff = moment().week(moment().week() - 1).endOf('week').add(1, 'days').format('YYYY-MM-DD HH:mm:ss');
+console.log('nextWeekendfff--->', nextWeekendfff);
+const nextWeekstartfff = moment().week(moment().week() - 1).startOf('week').add(1, 'days').format('YYYY-MM-DD HH:mm:ss');
+console.log('nextWeekstartfff--->', nextWeekstartfff);
+
+
+
+
