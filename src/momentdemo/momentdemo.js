@@ -90,6 +90,10 @@ console.log('unix--->', unix);
 const unix1 = moment(1318874398806).unix();
 console.log('unix1--->', unix1);
 //unix1---> 1318874398
+console.log('秒转正常格式', moment(unix * 1000).format('YYYY-MM-DD HH:mm:ss'));
+const s = moment().seconds();
+console.log('s---', s);
+console.log('秒转正常格式111', moment(s * 1000).format('YYYY-MM-DD HH:mm:ss'));
 
 //unix偏移量(毫秒)
 var unix2 = moment().valueOf();
@@ -219,5 +223,18 @@ const nextWeekstartfff = moment().week(moment().week() - 1).startOf('week').add(
 console.log('nextWeekstartfff--->', nextWeekstartfff);
 
 
+function getTimeSeconds(d) {
+    var ndate = new Date();
+    if (d) {
+        ndate = d;
+    }
+    return Math.floor(ndate.getTime() / 1000);
+};
+const a = getTimeSeconds();
+console.log('a---', a);
+console.log('秒转正常格式111', moment(a * 1000).format('YYYY-MM-DD HH:mm:ss'));
 
 
+
+const stime = moment(1563785265*1000);
+console.log('s time---', stime);

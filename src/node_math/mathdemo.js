@@ -229,6 +229,7 @@ function getRandomInt(max) {
 console.log(getRandomInt(3));
 console.log(getRandomInt(1));
 console.log(Math.random());
+console.log('随机数---',Math.random().toString().substr(2, 15));
 
 //Math.round()  把数四舍五入为最接近的整数。中间取大值
 console.log(Math.round(0.9));
