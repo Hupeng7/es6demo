@@ -35,12 +35,52 @@ var arr1 = ['a', 'b', 'c'];
 arr1.length = 0;
 console.log(arr1);
 
+// Array.from()
+// 将类数组对象或可迭代对象转化为数组
+// 参数为数组 返回与原数组一样的数组
+console.log(Array.from([1, 2]));
+// 参数含空位
+console.log(Array.from([1, , 3]));
 
+console.log(Array.from([1, 2, 3], (n) => n * 2));
 
+// thisArg
+// 可选 用于指定map函数执行时的this对象
+let map = {
+    do: function (n) {
+        return n * 2;
+    }
+}
+let arrayLike = [1, 2, 3];
+console.log(Array.from(arrayLike, function (n) {
+    return this.do(n)
+}, map));
 
+// 类数组对象
+// 一个类数组对象必须含有length属性 且元素属性必须是数值或者可转换为数值的字符
+let arr = Array.from({
+    0: '1',
+    1: '2',
+    2: 3,
+    length: 3
+});
+console.log(arr);
 
+// 没有length 属性，则返回空数组
+let array = Array.from({
+    0: '1',
+    1: '2',
+    2: 3
+})
+console.log(array);
 
-
+// 元素属性名不为数值且无法转换为数值 返回长度为length 元素值为 undefined的数组
+let array1 = Array.from({
+    a: 1,
+    b: 2,
+    length: 2
+});
+console.log(array1);
 
 
 

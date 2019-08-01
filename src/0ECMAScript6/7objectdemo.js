@@ -24,7 +24,7 @@ var obj2 = {
 
 //如果属性的值还是一个对象，就形成了链式引用。
 var o1 = {};
-var o2 = {bar: 'hello'};
+var o2 = { bar: 'hello' };
 o1.foo = o2;
 console.log(o1.foo.bar); // "hello"
 
@@ -111,27 +111,54 @@ var obj3 = {
 //     p2 = 5;
 // }
 
+/**
+ * 对象的新方法
+Object.assign(target, source_1, ···)
+用于将源对象的所有可枚举属性复制到目标对象中。
 
+基本用法
+ */
+let target = { a: 1 };
+let object2 = { b: 2 };
+let object3 = { c: 3 };
+Object.assign(target, object2, object3);
+console.log('target---', target);
 
+// 注意点
+//assign 的属性拷贝是浅拷贝:
+let sourceObj = { a: { b: 1 } };
+let targetObj = { c: 3 }
+Object.assign(targetObj, sourceObj);
+targetObj.a.b = 2;
+console.log(sourceObj.a.b);
 
+// 同名属性替换
+targetObj = { a: { b: 1, c: 2 } };
+sourceObj = { a: { b: "hh" } };
+Object.assign(targetObj, sourceObj);
+console.log(targetObj);
 
+// 数组的处理
+console.log(Object.assign([2, 3], [5]));
+// 会将数组处理成对象，所以先将 [2,3] 转为 {0:2,1:3} ，然后再进行属性复制，所以源对象的 0 号属性覆盖了目标对象的 0。
 
+/**
+ * Object.is(value1, value2)
+用来比较两个值是否严格相等，与（===）基本类似。
 
+基本用法
+ */
+console.log(Object.is("q", "q"));
+console.log(Object.is(1, 1));
+console.log([1], [1]);
+console.log({ q: 1 }, { q: 1 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 与 （===）的区别
+//  +0 不等于 -0
+console.log(Object.is(+0, -0)); // false
+console.log(+0 === -0);  //true
+// NaN 等于本身
+console.log(Object.is(NaN, NaN));  // true
+console.log(NaN === NaN);   // false
 
 
