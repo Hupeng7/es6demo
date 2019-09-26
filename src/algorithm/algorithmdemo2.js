@@ -32,7 +32,7 @@ var users2 = [{ id: 1, name: 'zhangsan' },
 
 var list = (function a() {
     let a = [];
-    for (let i = 0; i < 100000; i++) {
+    for (let i = 0; i < 9; i++) {
         a.push({ c: i + 1, m: (i + 1) * 1000 });
     }
     return a;
@@ -41,7 +41,7 @@ var list = (function a() {
 
 var users = (function a() {
     let a = [];
-    for (let i = 0; i < 99; i++) {
+    for (let i = 0; i < 9; i++) {
         a.push({ id: i + 1, name: 'username_' + (i + 1) });
     }
     return a;
@@ -62,19 +62,23 @@ function avgNum(list, users) {
     let list_new = list;
     while (list_new.length > 0) {
         for (let i = 0, len = users.length; i < len; i++) {
+            console.log('a count --->', a_count);
             user_case_list.push({ user_id: users[i].id, case: list_new.slice(0, a_count) });
             list_new = _.drop(list_new, a_count);
-            console.log('i count ---', i, list_new.length);
+            // console.log('i count ---', i, list_new.length);
             // console.log('list_new---', i, list_new);
             //console.log('iiii', i, '---user case list---', user_case_list);
             if (list_new.length <= 0) {
                 break;
             }
-            if (list_new.length < users.length) {
-                console.log('除不尽最后除数 被除数', list_new.length, users.length);
-                a_count = Math.floor(list_new.length / users.length);
+            // 只会分配两轮
+            // 第一轮分配后  均值变为1
+            if (i == len - 1) {
+                // console.log('除不尽最后除数 被除数', list_new.length, users.length);
+                // a_count = Math.floor(list_new.length / users.length);
                 // 均数为0时变为1 不能为负
-                a_count = a_count == 0 ? 1 : a_count;
+                // a_count = a_count == 0 ? 1 : a_count;
+                a_count = 1;
             }
         }
         //console.log('list_new---', list_new);
@@ -82,7 +86,7 @@ function avgNum(list, users) {
             break;
         }
     }
-    //console.log('user_case_list---', user_case_list);
+    console.log('user_case_list---', user_case_list);
 }
 
 var a = avgNum(list, users);
@@ -120,7 +124,7 @@ function percentNum(list, users_per) {
             break;
         }
     }
-    // console.log('user_case_list---', user_case_list);
+    console.log('user_case_list---', user_case_list);
 }
 
 var p = percentNum(list, users_per);
@@ -171,6 +175,6 @@ function avgNumConsiderOriginalNum(list, user_co) {
             break;
         }
     }
-    // console.log('user_case_list o num---', user_case_list);
+    console.log('user_case_list o num---', user_case_list);
 }
 var o_g = avgNumConsiderOriginalNum(list, user_co);
