@@ -34,6 +34,8 @@ const endDate4 = moment('2019-01-15 12:30:56').add(7, 'days').endOf('day').forma
 console.log('endDate4--->', endDate4);
 console.log('max day', moment().endOf('day'));
 
+console.log('0501 day end timestamp', moment('2019-05-01').endOf('day').valueOf());
+console.log('0501 day start timestamp', moment('2019-05-01').valueOf());
 // 下周末
 const nextWeekend = moment().week(moment().week() + 1).endOf('week').add(1, 'days').format('YYYY-MM-DD HH:mm:ss');
 console.log('nextWeekend--->', nextWeekend);
@@ -77,7 +79,7 @@ console.log('本月开始时间--->', cur_month_start_time);
 
 // 天
 const dayStart = moment().day(moment().day() - 1).startOf('day').format('YYYY-MM-DD HH:mm:ss');
-console.log('dayStart--->', dayStart);
+console.log('dayStart dayStart dayStart--->', dayStart);
 
 // Date 类型  前一天 开始和结束
 const yesterdayStart = moment(moment().day(moment().day() - 4).startOf('day').format('YYYY-MM-DD HH:mm:ss')).millisecond(0).toDate();
