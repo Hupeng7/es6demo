@@ -238,5 +238,9 @@ console.log('秒转正常格式111', moment(a * 1000).format('YYYY-MM-DD HH:mm:s
 
 
 
-const stime = moment(1563785265*1000);
+const stime = moment(1563785265 * 1000);
 console.log('s time---', stime);
+
+let checkDate11091 = moment(1570767000 * 1000).isBefore(new Date());
+let checkDate1109 = moment(1573444800 * 1000).isBefore(new Date());
+console.log('checkDate1109--->', checkDate1109);
