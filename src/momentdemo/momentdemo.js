@@ -244,3 +244,28 @@ console.log('s time---', stime);
 let checkDate11091 = moment(1570767000 * 1000).isBefore(new Date());
 let checkDate1109 = moment(1573444800 * 1000).isBefore(new Date());
 console.log('checkDate1109--->', checkDate1109);
+
+// 三个月之前
+const three_month = moment().month(moment('2019-05-15 12:30:56').month() - 3).startOf('day').format('YYYY-MM-DD HH:mm:ss');
+console.log('three_month--->', three_month);
+
+const three_month1 = moment().month(moment().month() - 3).startOf('day').format('YYYY-MM-DD HH:mm:ss');
+console.log('three_month1--->', three_month1);
+
+// 3天前
+const dayStart3 = moment().day(moment().day() - 3).startOf('day').format('YYYY-MM-DD HH:mm:ss');
+console.log('3天前--->', dayStart3);
+
+// 30天前
+const dayStart30 = moment().day(moment().day() - 30).startOf('day').format('YYYY-MM-DD HH:mm:ss');
+console.log('30天前--->', dayStart30);
+
+// 当前时间的前一天
+moment.locale('zh-cn');
+var today = {};
+var _today = moment();
+today.year = _today.format('yyyy'); /*现在的年*/
+today.date = _today.format('YYYY-MM-DD'); /*现在的时间*/
+today.yesterday = _today.subtract(1, 'days').format('YYYY-MM-DD'); /*前一天的时间*/
+
+var formatDate = moment(12345678977).format('YYYY-MM-DD HH:mm:ss'); /*格式化时间*/

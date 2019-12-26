@@ -78,3 +78,42 @@ function oneLine(template, ...expressions) {
     result = result.trim();
     return result;
 }
+
+// 脱敏处理1
+let own_address1 = "江西省南昌市青云谱区三店西路118号12栋6单元701户";
+let own_address = "123";
+if (own_address && own_address.length > 0) {
+    console.log((own_address.length - 5));
+    own_address = own_address.slice(0, (own_address.length - 5)) + "*****";
+}
+console.log('address--->', own_address);
+
+// 通用方法
+function desensitization(str, beginLen, endLen) {
+    var len = str.length;
+    var firstStr = str.substr(0, beginLen);
+    var lastStr = str.substr(endLen);
+    var middleStr = str.substring(beginLen, len - Math.abs(endLen)).replace(/[\s\S]/ig, '*');
+
+    tempStr = firstStr + middleStr + lastStr;
+
+    return tempStr;
+
+}
+const desensitizationStr = desensitization('12345678901234', 4, -4);
+console.log('desensitizationStr---', desensitizationStr);
+
+
+function desensitization1(str, beginLen) {
+    var len = str.length;
+    var firstStr = str.substr(0, beginLen);
+    //var lastStr = str.substr(endLen);
+    var middleStr = str.substring(beginLen, len).replace(/[\s\S]/ig, '*');
+
+    tempStr = firstStr + middleStr;
+
+    return tempStr;
+
+}
+const desensitizationStr1 = desensitization1('1234', 0);
+console.log('desensitizationStr1---', desensitizationStr1);
