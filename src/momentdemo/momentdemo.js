@@ -264,8 +264,13 @@ console.log('30天前--->', dayStart30);
 moment.locale('zh-cn');
 var today = {};
 var _today = moment();
-today.year = _today.format('yyyy'); /*现在的年*/
-today.date = _today.format('YYYY-MM-DD'); /*现在的时间*/
+today.year = _today.format('YYYY'); /*现在的年*/
+console.log('年--->', today.year);
+today.date = _today.format('YYYY//-:MM-DD'); /*现在的时间*/
+console.log('现在的时间--->', today.date);
 today.yesterday = _today.subtract(1, 'days').format('YYYY-MM-DD'); /*前一天的时间*/
 
 var formatDate = moment(12345678977).format('YYYY-MM-DD HH:mm:ss'); /*格式化时间*/
+
+console.log('day 111--->', (moment().date() % 2 == 0 ? 1 : 0));
+console.log('day 222--->', moment().days());
